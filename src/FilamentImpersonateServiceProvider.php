@@ -10,7 +10,7 @@ use Lab404\Impersonate\Events\TakeImpersonation;
 use Spatie\LaravelPackageTools\Package;
 use Filament\Support\Facades\FilamentView;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use STS\FilamentImpersonate\Tables\Actions\Impersonate;
+use STS\FilamentImpersonate\Actions\Impersonate;
 use BladeUI\Icons\Factory;
 
 class FilamentImpersonateServiceProvider extends PackageServiceProvider

@@ -1,6 +1,6 @@
 <?php
 
-namespace STS\FilamentImpersonate\Pages\Actions;
+namespace STS\FilamentImpersonate\Actions;
 
 use Filament\Actions\Action;
 use STS\FilamentImpersonate\Concerns\Impersonates;
