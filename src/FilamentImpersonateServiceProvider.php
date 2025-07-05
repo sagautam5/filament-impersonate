@@ -53,15 +53,18 @@ class FilamentImpersonateServiceProvider extends PackageServiceProvider
         }
     }
 
+
     protected function clearAuthHashes(): void
     {
-        session()->forget(array_unique([
+        $backToPanel = Filament::getPanel(session()->get('impersonate.back_to_panel'));
+
+        session()->forget(array_unique(array_filter([
             'password_hash_' . session('impersonate.guard'),
-            'password_hash_' . Filament::getCurrentPanel()->getAuthGuard(),
-            'password_hash_' . Filament::getPanel(session()->get('impersonate.back_to_panel'))->getAuthGuard(),
+            'password_hash_' . optional(Filament::getCurrentPanel())->getAuthGuard(),
+            $backToPanel ? 'password_hash_' . $backToPanel->getAuthGuard() : null,
             'password_hash_' . auth()->getDefaultDriver(),
             'password_hash_sanctum'
-        ]));
+        ])));
     }
 
     protected function registerIcon(): void
